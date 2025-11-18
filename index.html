@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrum Quiz</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- Welcome Screen -->
+        <div id="welcome-screen" class="card active">
+            <h1>Bienvenue au Quiz Scrum</h1>
+            <p>Pour commencer un nouveau quiz, veuillez téléverser le fichier de questions.</p>
+            <div class="file-upload-wrapper">
+                <input type="file" id="file-input" accept=".json" class="file-input">
+                <label for="file-input" class="btn btn-primary">Nouveau Quiz depuis JSON</label>
+                <span id="file-name" class="file-name">Aucun fichier choisi</span>
+            </div>
+            <hr>
+            <p>Ou chargez les résultats d'un quiz précédent.</p>
+            <div class="file-upload-wrapper">
+                <input type="file" id="results-file-input" accept=".json" class="file-input">
+                <label for="results-file-input" class="btn btn-secondary">Voir résultats depuis JSON</label>
+                <span id="results-file-name" class="file-name">Aucun fichier choisi</span>
+            </div>
+            <p class="error-message" id="error-message"></p>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quiz-screen">
+            <main class="quiz-main">
+                <div class="question-card">
+                    <div class="question-card-header">
+                        <span id="question-counter"></span>
+                        <div class="header-icons">
+                            <span id="timer">60:00</span>
+                            <span id="bookmark-icon" class="bookmark">&#128278;</span>
+                        </div>
+                    </div>
+                    <div class="question-card-body">
+                        <p id="question-text"></p>
+                        <p id="question-note" class="note"></p>
+                        <hr>
+                        <div id="options-container"></div>
+                    </div>
+                </div>
+            </main>
+            <footer class="quiz-footer">
+                <button id="prev-btn" class="btn btn-secondary">Précédent</button>
+                <select id="nav-dropdown" class="nav-dropdown"></select>
+                <button id="next-btn" class="btn btn-primary">Suivant</button>
+            </footer>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="results-screen" class="card">
+            <h2>Résultats du Quiz</h2>
+            <div id="score-container">
+                <p>Votre score : <span id="score"></span></p>
+                <p>Pourcentage de réussite : <span id="percentage"></span>%</p>
+            </div>
+
+            <div id="analysis-section">
+                <hr>
+                <h3>Analyse par Sujet</h3>
+                <div id="chart-container">
+                    <canvas id="tags-chart"></canvas>
+                </div>
+                <div id="advice-container">
+                    <h4>Conseils de révision</h4>
+                    <p id="advice-text"></p>
+                </div>
+            </div>
+
+            <div id="results-summary">
+                <hr>
+                <div class="summary-header">
+                    <h3>Résumé des réponses</h3>
+                    <div class="filter-wrapper">
+                        <input type="checkbox" id="show-only-incorrect">
+                        <label for="show-only-incorrect">Afficher uniquement les réponses fausses</label>
+                    </div>
+                </div>
+                <div id="summary-container"></div>
+            </div>
+            <div class="results-actions">
+                <button id="export-btn" class="btn btn-primary">Exporter en JSON</button>
+                <button id="restart-btn" class="btn btn-secondary">Recommencer</button>
+            </div>
+        </div>
+    </div>
+    <footer class="global-footer">
+        made with ❤️ by POP
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
